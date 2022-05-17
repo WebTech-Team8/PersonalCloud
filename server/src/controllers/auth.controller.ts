@@ -1,8 +1,10 @@
 import { hash } from "bcrypt";
 import { Router } from "express";
-import mongoose, { mongo } from "mongoose";
+import mongoose from "mongoose";
+import { ITokens } from "../interfaces/tokens.interface";
 import { IUser } from "../interfaces/user.interface";
 import { UserModel } from "../models/user.model";
+import { saveRefreshToken, signTokens } from "../utils/token.utils";
 
 const authController = Router();
 
@@ -30,8 +32,15 @@ authController.post("/register", async (req, res) => {
         }
 
         await user.save();
+        
+        try {
+            const tokens: ITokens = signTokens(user);
+            await saveRefreshToken(tokens.refreshToken);
 
-        return res.json(user);
+            return res.json(tokens);
+        } catch (error) {
+            res.send({ error: "There was an error signing your token." });
+        }
     }
 
     return res.json({ error: "User already exists." });
