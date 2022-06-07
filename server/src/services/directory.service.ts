@@ -38,9 +38,19 @@ async function addDirToParentChildren(parentId: string, directoryId: string) {
     return await parent?.save();
 }
 
+async function renameDir(directoryId: string, dirName: string) {
+    return await DirectoryModel.findByIdAndUpdate(directoryId, { name: dirName }, { new: true });
+}
+
+async function exists(id: string) {
+    return await DirectoryModel.exists({ _id: id });
+}
+
 export {
     isRootDir,
     isDirNameUsed,
     createDir,
-    addDirToParentChildren
+    addDirToParentChildren,
+    renameDir,
+    exists
 }

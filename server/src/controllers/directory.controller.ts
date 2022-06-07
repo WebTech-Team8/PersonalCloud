@@ -12,7 +12,7 @@ directoryController.post('/create', verifyToken, async (req, res) => {
 
     if (parentId) {
         const isDirectoryNameUsed = await directoryService.isDirNameUsed(parentId, dirName);
-        
+
         if (isDirectoryNameUsed) {
             return res.json({ error: `Directory ${dirName} already exists.` });
         }
@@ -33,5 +33,19 @@ directoryController.post('/create', verifyToken, async (req, res) => {
         return res.send({ error: message });
     }
 });
+
+directoryController.patch('/:directoryId', async (req, res) => {
+    const directoryId = req.params.directoryId;
+    const newDirName = req.body.name;
+    const isDirectoryExistent = await directoryService.exists(directoryId);
+
+    if (!isDirectoryExistent) {
+        return res.json({ error: 'There is no directory with such id.' });
+    }
+
+    const directory = await directoryService.renameDir(directoryId, newDirName);
+
+    return res.json(directory);
+})
 
 export default directoryController;
