@@ -1,6 +1,10 @@
-import { Application } from 'express';
+import { Router, Application } from 'express';
 import authController from '../controllers/auth.controller';
 
-export default function setup(app: Application) : void {
-    app.use('/auth', authController);
+const router = Router();
+
+export default function setup(app: Application, path: string) : void {
+    router.use('/auth', authController);
+
+    app.use(path, router);
 }

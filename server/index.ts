@@ -19,7 +19,7 @@ async function startServer() {
     console.log(dbMessage);
 
     // Route configuration
-    setupRouter(app);
+    setupRouter(app, '/api');
     
     // Starting the server
     app.listen(process.env.PORT, () => {
