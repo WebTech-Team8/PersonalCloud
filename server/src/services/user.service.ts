@@ -17,9 +17,7 @@ async function createUser(userData: IUser) {
         throw validation;
     }
 
-    await user.save();
-
-    return user;
+    return await user.save();
 }
 
 async function getByEmail(email: string) {

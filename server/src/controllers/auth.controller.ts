@@ -34,7 +34,7 @@ authController.post('/register', async (req, res) => {
                 message = error.message;
             }
             
-            res.send({ error: message });
+            return res.send({ error: message });
         }
     }
 
@@ -75,12 +75,17 @@ authController.post('/logout', async (req, res) => {
 		return res.status(400).json({ error: 'Invalid parameter - token' })
 	}
 
+	const tokenExists = await tokensService.isTokenExistent(refreshToken);
+	if (!tokenExists) {
+		return res.send({ error: 'Inexistent token.' });
+	}	
+
 	const tokenDocument = await tokensService.removeRefreshToken(refreshToken);
 	if (!tokenDocument) {
 		return res.status(403);
 	}
 
-	return res.status(204).json({ message: 'You have been logged out!'});
+	return res.json({ message: 'You have been logged out.'});
 });
 
 export default authController;
