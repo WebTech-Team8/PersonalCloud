@@ -16,7 +16,7 @@ const directorySchema = new Schema<IDirectory>({
         type: Schema.Types.Boolean,
         default: 'false'
     },
-    parentDir: {
+    parentDirId: {
         type: Schema.Types.ObjectId,
         ref: 'Directory',
         required: false
