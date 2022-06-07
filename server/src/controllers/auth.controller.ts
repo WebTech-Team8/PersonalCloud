@@ -6,7 +6,7 @@ import { IUser } from '../interfaces/user.interface';
 import { UserModel } from '../models/user.model';
 import { saveRefreshToken, signTokens } from '../utils/token.utils';
 import * as userService from '../services/user.service';
-import * as tokensService from '../services/tokens.service';
+import * as tokensService from '../services/token.service';
 
 const authController = Router();
 
