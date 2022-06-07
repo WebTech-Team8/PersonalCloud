@@ -1,16 +1,16 @@
-import mongoose from "mongoose";
-import { compareSync, hash } from "bcrypt";
-import { Router } from "express";
-import { ITokens } from "../interfaces/tokens.interface";
-import { IUser } from "../interfaces/user.interface";
-import { UserModel } from "../models/user.model";
-import { saveRefreshToken, signTokens } from "../utils/token.utils";
-import * as userService from "../services/user.service";
-import * as tokensService from "../services/tokens.service";
+import mongoose from 'mongoose';
+import { compareSync, hash } from 'bcrypt';
+import { Router } from 'express';
+import { ITokens } from '../interfaces/tokens.interface';
+import { IUser } from '../interfaces/user.interface';
+import { UserModel } from '../models/user.model';
+import { saveRefreshToken, signTokens } from '../utils/token.utils';
+import * as userService from '../services/user.service';
+import * as tokensService from '../services/tokens.service';
 
 const authController = Router();
 
-authController.post("/register", async (req, res) => {
+authController.post('/register', async (req, res) => {
     const inputData = req.body as IUser;
 
     const userExists = await UserModel.exists({ username: inputData.username }) ||
@@ -28,7 +28,7 @@ authController.post("/register", async (req, res) => {
 
             return res.json(tokens);
         } catch (error) {
-            let message: string = "There was an error signing your token.";
+            let message: string = 'There was an error signing your token.';
 
             if (error instanceof mongoose.Error.ValidationError) {
                 message = error.message;
@@ -38,10 +38,10 @@ authController.post("/register", async (req, res) => {
         }
     }
 
-    return res.json({ error: "User already exists." });
+    return res.json({ error: 'User already exists.' });
 });
 
-authController.post("/login", async (req, res) => {
+authController.post('/login', async (req, res) => {
     const email: string = req.body.email;
 	if (!email || email === '') {
 		return res.status(400).json({ error: 'Invalid email address' })
@@ -68,7 +68,7 @@ authController.post("/login", async (req, res) => {
 	};
 });
 
-authController.post("/logout", async (req, res) => {
+authController.post('/logout', async (req, res) => {
     const refreshToken: string = req.body.token;
 
 	if (!refreshToken || refreshToken === '') {
@@ -80,7 +80,7 @@ authController.post("/logout", async (req, res) => {
 		return res.status(403);
 	}
 
-	return res.status(204).json({ message: "You have been logged out!"});
+	return res.status(204).json({ message: 'You have been logged out!'});
 });
 
 export default authController;

@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
-import { IUser } from "../interfaces/user.interface";
-import { UserModel } from "../models/user.model";
+import mongoose from 'mongoose';
+import { IUser } from '../interfaces/user.interface';
+import { UserModel } from '../models/user.model';
 
 async function createUser(userData: IUser) {
     const user = new UserModel({
