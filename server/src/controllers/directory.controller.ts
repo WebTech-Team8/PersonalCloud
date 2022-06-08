@@ -1,6 +1,7 @@
 import { Router } from "express";
 import mongoose from "mongoose";
 import { IAuthenticatedRequest } from "../interfaces/auth-request.interface";
+import { IDirectory } from "../interfaces/directory.interface";
 import { verifyToken } from "../middlewares/verify-token";
 import * as directoryService from "../services/directory.service";
 
@@ -46,6 +47,27 @@ directoryController.patch('/:directoryId', async (req, res) => {
     const directory = await directoryService.renameDir(directoryId, newDirName);
 
     return res.json(directory);
-})
+});
+
+directoryController.delete('/:directoryId', async (req, res) => {
+    const { directoryId } = req.params;
+    const directory = await directoryService.getById(directoryId);
+
+    if (!directory) {
+        return res.json({ error: 'There is no directory with such id.' });
+    }
+
+    const parentId = (directory as IDirectory).parentDirId;
+    if (parentId) {
+        directoryService.removeChildDirectory(parentId, directoryId);
+    }
+
+    const removed = await directoryService.removeDirectory(directoryId);
+    if (!removed) {
+        return res.json({ error: 'There was an error deleting your directory.' });
+    }
+
+    return res.json({ message: 'Directory was successfully deleted.' });
+});
 
 export default directoryController;

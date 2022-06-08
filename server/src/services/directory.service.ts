@@ -43,7 +43,19 @@ async function renameDir(directoryId: string, dirName: string) {
 }
 
 async function exists(id: string) {
-    return await DirectoryModel.exists({ _id: id });
+    return await DirectoryModel.exists({ id });
+}
+
+async function getById(id: string) {
+    return await DirectoryModel.findOne({ id });
+}
+
+async function removeDirectory(directoryId: string) {
+    return await DirectoryModel.findOneAndDelete({ id: directoryId });
+}
+
+async function removeChildDirectory(parentId: string, directoryId: string) {
+    return await DirectoryModel.findOneAndUpdate({ _id: parentId }, { $pull: { childDirectories: directoryId } });
 }
 
 export {
@@ -52,5 +64,8 @@ export {
     createDir,
     addDirToParentChildren,
     renameDir,
-    exists
+    exists,
+    getById,
+    removeDirectory,
+    removeChildDirectory
 }
