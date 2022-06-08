@@ -10,7 +10,8 @@ const Header: React.FC<HeaderComponentProps> = ({ isLogged }: HeaderComponentPro
             <div className="wrapper">
             <div className="site-branding">
                 <Link to="/">
-                    <p className="site-title">Title</p>
+                    <p className="site-title">Personal</p>
+                    <p className="site-subtitle">Cloud</p>
                 </Link>
             </div>
             <Navigation isLogged={isLogged} />

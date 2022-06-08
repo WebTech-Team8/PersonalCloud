@@ -1,6 +1,6 @@
 .site-header {
     background-color: var(--main-color);
-    padding: 0.5em;
+    padding: 0.2em 0;
     color: var(--secondary-color);
 }
 
@@ -19,7 +19,7 @@
 }
 
 .site-title {
-    font-size: 2.4em;
+    font-size: 1.8em;
     font-style: italic;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: 700;
@@ -32,7 +32,8 @@
     padding-bottom: 0;
     margin-bottom: 0;
     font-weight: 700;
-    font-size: 1em;
+    font-size: 1.2em;
     font-style: italic;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     letter-spacing: 0.5em;
 } 
