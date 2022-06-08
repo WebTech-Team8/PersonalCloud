@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 import { HeaderComponentProps } from './Header.props';
+import './Header.css'
 
 const Header: React.FC<HeaderComponentProps> = ({ isLogged }: HeaderComponentProps) => {
     return (
