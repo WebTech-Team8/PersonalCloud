@@ -4,6 +4,7 @@ import logo from '../../logo.svg';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Home from '../Home/Home';
+import Login from '../Login/Login';
 import Register from '../Register/Register';
 import './App.css';
 
@@ -15,12 +16,7 @@ function App() {
         <main className="site-main">
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/login" exact>
-              <img src={logo} className="App-logo" alt="logo" />
-              <p>
-                Login Page
-              </p>
-            </Route>
+            <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
           </Switch>
         </main>

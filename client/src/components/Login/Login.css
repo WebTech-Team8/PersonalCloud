@@ -1,0 +1,22 @@
+.login-form {
+    max-width: 35em;
+    margin: 0 auto;
+    padding: 3.1em 0;
+}
+
+.login-form form {
+    padding: 3.5em 0.5;
+}
+
+.login-form p {
+    padding-bottom: 0.5em;
+    padding-top: 2em;
+}
+
+.login-form p a {
+    color: var(--main-color);
+}
+
+.login-form p a:hover {
+    text-decoration: underline;
+}
