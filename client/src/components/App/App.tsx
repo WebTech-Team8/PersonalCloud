@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import logo from '../../logo.svg';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
+import Home from '../Home/Home';
+import Register from '../Register/Register';
 import './App.css';
 
 function App() {
@@ -10,38 +12,21 @@ function App() {
     <BrowserRouter>
       <div className="site">
         <Header isLogged={false} />
-        <Switch>
-          <Route path="/" exact>
-            <main className="site-main">
-              <img src={logo} className="App-logo" alt="logo" />
-              <p>
-                Edit <code>src/App.tsx</code> and save to reload.
-              </p>
-              <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-                Learn React
-              </a>
-            </main>
-          </Route>
-          <Route path="/login" exact>
-            <main className='site-main'>
+        <main className="site-main">
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/login" exact>
               <img src={logo} className="App-logo" alt="logo" />
               <p>
                 Login Page
               </p>
-            </main>
-          </Route>
-          <Route path="/register" exact>
-            <main className='site-main'>
-              <img src={logo} className="App-logo" alt="logo" />
-              <p>
-                Register Page
-              </p>
-            </main>
-          </Route>
-        </Switch>
+            </Route>
+            <Route path="/register" exact component={Register} />
+          </Switch>
+        </main>
         <Footer />
       </div>
-    </BrowserRouter>
+    </BrowserRouter >
   );
 }
 
