@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { NavigationComponentProps } from './Navigation.props';
+import './Navigation.css'
 
 const Navigation: React.FC<NavigationComponentProps> = ({ isLogged }) => {
     return (
