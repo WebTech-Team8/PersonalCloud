@@ -28,6 +28,7 @@ const Register: React.FC<IFormComponentProps> = ({ controlChangeHandlerFactory, 
         userService.register(formData).then(response => {
             // Saving the access token in the local storage of the browser
             localStorage.setItem('auth-token', response.accessToken);
+            localStorage.setItem('refresh-token', response.refreshToken);
 
             // Redirect to home page after successful registration
             history.push('/');

@@ -19,6 +19,7 @@ const Login: React.FC<IFormComponentProps> = ({ controlChangeHandlerFactory, get
         userService.login(formData).then(res => {
             // Saving the access token in the local storage of the browser
             localStorage.setItem('auth-token', res.accessToken);
+            localStorage.setItem('refresh-token', res.refreshToken);
 
             // Redirect to home page after successful signing in
             history.push('/');
