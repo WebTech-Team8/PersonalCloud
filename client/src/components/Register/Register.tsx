@@ -4,8 +4,13 @@ import '../shared/styles.forms.css'
 import { formComponent } from '../shared/hocs/formComponent';
 import { IFormComponentProps } from '../shared/types.forms';
 import userService from '../../services/user.service';
+import { useHistory } from 'react-router-dom';
 
 const Register: React.FC<IFormComponentProps> = ({ controlChangeHandlerFactory, getFormState }) => {
+    // Using React Hook for accessing the history so we can redirect
+    let history = useHistory();
+
+    // On change input handlers
     const firstNameOnChangeHandler = controlChangeHandlerFactory('firstName');
     const lastNameOnChangeHandler = controlChangeHandlerFactory('lastName');
     const emailOnChangeHandler = controlChangeHandlerFactory('email');
@@ -14,15 +19,22 @@ const Register: React.FC<IFormComponentProps> = ({ controlChangeHandlerFactory, 
     const confirmPasswordOnChangeHandler = controlChangeHandlerFactory('confirmPassword');
 
     const submitHandler = async () => {
-        // const { firstName, lastName, email, username, password, confirmPassword } = getFormState();
         const formData = getFormState();
 
         if (formData.password !== formData.confirmPassword) {
             console.log('Passwords do not match!');
             return;
         }
-        const response = await userService.register(formData);
-        console.log(response);
+        userService.register(formData).then(response => {
+            console.log(response);
+
+            localStorage.setItem('auth-token', response.accessToken);
+
+            // Redirect to home page after successful registration
+            history.push('/');
+        }).catch(err => {
+            console.error(err);
+        });
     }
 
     return (

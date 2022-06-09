@@ -10,6 +10,9 @@ const userService = {
             }
         });
         return await res.json();
+    },
+    isAuthenticated: () => {
+        return localStorage.getItem('auth-token') !== null;
     }
 } 
 
