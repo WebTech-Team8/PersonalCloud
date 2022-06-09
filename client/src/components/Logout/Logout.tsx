@@ -9,7 +9,7 @@ const Logout = () => {
         localStorage.removeItem('auth-token');
         localStorage.removeItem('refresh-token');
 
-        history.push('/');
+        history.push('/update-app');
     }).catch(err => {
         console.log(err);
     });
