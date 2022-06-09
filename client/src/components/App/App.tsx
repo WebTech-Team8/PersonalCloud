@@ -6,6 +6,7 @@ import Header from '../Header/Header';
 import Home from '../Home/Home';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
+import Logout from '../Logout/Logout';
 import './App.css';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             <Route path="/" exact component={Home} />
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
+            <Route path="/logout" exact component={Logout} />
           </Switch>
         </main>
         <Footer />

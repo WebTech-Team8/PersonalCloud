@@ -24,6 +24,16 @@ const userService = {
         });
         return await res.json();
     },
+    logout: async (token: object) => {
+        const res = await fetch('http://localhost:3001/api/auth/logout', {
+            body: JSON.stringify(token),
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        return await res.json();
+    },
     isAuthenticated: () => {
         return localStorage.getItem('auth-token') !== null;
     }
