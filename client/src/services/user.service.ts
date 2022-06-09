@@ -11,6 +11,19 @@ const userService = {
         });
         return await res.json();
     },
+    login: async (data: IForm) => {
+        const res = await fetch('http://localhost:3001/api/auth/login', {
+            body: JSON.stringify({ 
+                email: data.email, 
+                password: data.password 
+            }),
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        return await res.json();
+    },
     isAuthenticated: () => {
         return localStorage.getItem('auth-token') !== null;
     }
