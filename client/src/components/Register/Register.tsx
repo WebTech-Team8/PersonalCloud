@@ -16,6 +16,11 @@ const Register: React.FC<IFormComponentProps> = ({ controlChangeHandlerFactory, 
     const submitHandler = async () => {
         // const { firstName, lastName, email, username, password, confirmPassword } = getFormState();
         const formData = getFormState();
+
+        if (formData.password !== formData.confirmPassword) {
+            console.log('Passwords do not match!');
+            return;
+        }
         const response = await userService.register(formData);
         console.log(response);
     }
