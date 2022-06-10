@@ -2,12 +2,10 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { NavigationComponentProps } from './Navigation.props';
 import './Navigation.css'
-import SearchBar from "../SearchBar/SearchBar";
 
 const Navigation: React.FC<NavigationComponentProps> = ({ isLogged }) => {
     return (
         <nav className="site-nav">
-            <SearchBar/>
             {isLogged ?
                 <ul>
                     <li><Link to="/logout">Logout</Link></li>
