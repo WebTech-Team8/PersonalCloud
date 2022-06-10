@@ -1,0 +1,32 @@
+.file {
+    min-height: 50px;
+    min-width: 50px;
+    max-width: 100px;
+    width: 100%;
+    margin: 30px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    cursor: pointer;
+}
+
+.file-name {
+    margin-top: 10px;
+    align-items: center;
+}
+
+.file-image {
+    flex-grow: 0.9;
+    height: 90px;
+    width: 90px;
+}
+
+.icons {
+    align-self: flex-end;
+}
+
+
+
+

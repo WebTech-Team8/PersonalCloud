@@ -3,7 +3,7 @@ import {Folder} from "./folder";
 export interface File {
     name: string;
     size: number;
-    type: string;
+    extension: string;
     created: Date;
-    folder: Folder;
+  //  folder: Folder;
 }

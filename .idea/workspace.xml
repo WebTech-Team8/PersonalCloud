@@ -2,9 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c77a001a-0567-4d77-abd5-7f6dfe68d6fe" name="Default Changelist" comment="Search-bar">
+      <change afterPath="$PROJECT_DIR$/client/src/assets/docLogo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/assets/fileLogo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/assets/imageLogo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/assets/pdfLogo.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/assets/pptxLogo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Dashboard/Dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Dashboard/Dashboard.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Dashboard/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Dashboard/Dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/SearchBar/SearchBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SearchBar/SearchBar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/FileComponent/FileComponent.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/FileComponent/FileComponent.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/FileComponent/FileComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/FileComponent/FileComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/interfaces/file.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/interfaces/file.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +78,7 @@
       <updated>1654785675217</updated>
       <workItem from="1654785683451" duration="4029000" />
       <workItem from="1654791993533" duration="1414000" />
-      <workItem from="1654802110750" duration="11395000" />
+      <workItem from="1654802110750" duration="19384000" />
     </task>
     <task id="LOCAL-00001" summary="Search-bar">
       <created>1654806695402</created>
@@ -76,7 +87,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654806695402</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Created file and folder interfaces">
+      <created>1654865214945</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1654865214945</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -96,6 +114,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Search-bar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Search-bar" />
+    <MESSAGE value="Created file and folder interfaces" />
+    <MESSAGE value="File Component and added assets" />
+    <option name="LAST_COMMIT_MESSAGE" value="File Component and added assets" />
   </component>
 </project>
