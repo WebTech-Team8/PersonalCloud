@@ -3,8 +3,8 @@ import './Dashboard.css';
 import FileComponent from "../FileComponent/FileComponent";
 
 
-const Dashboard: React.FC = () => {
-
+const Dashboard: React.FC<{prerender: () => void}> = (props: any) => {
+    props.prerender();
 
     return (
         <div className='dashboard'>

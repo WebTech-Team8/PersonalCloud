@@ -22,7 +22,7 @@ const Login: React.FC<IFormComponentProps> = ({ controlChangeHandlerFactory, get
             localStorage.setItem('refresh-token', res.refreshToken);
 
             // Redirect to home page after successful signing in
-            history.push('/update-app');
+            history.push('/');
         }).catch(err => {
             console.error(err);
         });
