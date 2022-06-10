@@ -1,5 +1,4 @@
 .search-bar {
-
     position: relative;
     display: flex;
 }
@@ -11,11 +10,12 @@
     height: 30px;
     border-radius: 5px 0 0 5px;
     outline: none;
-    color: #9DBFAF;
+    color: #007acc;
+    justify-content: space-between;
 }
 
 .search:focus{
-    color: #00B4CC;
+    color: #007acc;
 }
 
 .search-btn {
@@ -31,6 +31,8 @@
 }
 
 .wrap{
+    display: flex;
+    justify-content: space-between;
     height: 93%;
     position: absolute;
     top: 50%;
