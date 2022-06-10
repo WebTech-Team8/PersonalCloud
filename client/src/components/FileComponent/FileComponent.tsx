@@ -11,27 +11,29 @@ import {FaShareSquare} from 'react-icons/fa';
 const FileComponent: React.FC<File> = (props) => {
 
     const file = props;
-    let logo = fileLogo;
+    let logo;
 
-    if (file.extension === 'png' || file.extension === 'jpg') {
+    if (file.extension === ".png" || file.extension === ".jpg") {
         logo = imageLogo;
-    } else if (file.extension === 'doc') {
+    } else if (file.extension === ".doc") {
         logo = docLogo;
-    } else if (file.extension === 'pptx'){
+    } else if (file.extension === ".pptx"){
         logo = pptxLogo;
-    } else if (file.extension === 'pdf'){
+    } else if (file.extension === ".pdf"){
         logo = pdfLogo;
+    } else {
+        logo = fileLogo;
     }
 
     return (
         <div className="file">
-            <div className='icons'>
+            <div className="icon">
                 <FaShareSquare/>
             </div>
             <img src={logo} className="file-image" />
             <span className="file-name">
                 <b>{file.name.length > 10 ?
-                    file.name.substring(0, 10) + "..." : file.name}</b>
+                    file.name.substring(0, 10) + "..." : file.name}{file.extension}</b>
             </span>
         </div>
     );
