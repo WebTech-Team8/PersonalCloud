@@ -31,7 +31,7 @@ const Register: React.FC<IFormComponentProps> = ({ controlChangeHandlerFactory, 
             localStorage.setItem('refresh-token', response.refreshToken);
 
             // Redirect to home page after successful registration
-            history.push('/update-app');
+            history.push('/');
         }).catch(err => {
             console.error(err);
         });

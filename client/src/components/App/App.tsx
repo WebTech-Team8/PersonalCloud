@@ -8,7 +8,6 @@ import Login from '../Login/Login';
 import Register from '../Register/Register';
 import Logout from '../Logout/Logout';
 import './App.css';
-import Update from '../Update/Update';
 
 function App() {
   const [isLogged, setIsLogged] = useState(userService.isAuthenticated());
@@ -23,11 +22,10 @@ function App() {
         <Header isLogged={isLogged} />
         <main className="site-main">
           <Switch>
-            <Route path="/" exact component={Dashboard} />
+            <Route path="/" exact render={(props) => <Dashboard {...props} prerender={prerender} />} />
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
             <Route path="/logout" exact component={Logout} />
-            <Route path="/update-app" exact render={(props) => <Update {...props} prerender={prerender} />} />
           </Switch>
         </main>
         <Footer />
