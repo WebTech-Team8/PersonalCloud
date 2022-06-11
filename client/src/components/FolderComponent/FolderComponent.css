@@ -1,0 +1,17 @@
+.folder{
+    margin: 10px;
+    cursor: pointer;
+    outline-color: #FFFFFF;
+}
+
+.folder-icon{
+    width: 70px;
+    height: 70px;
+    color: #469FFF;
+}
+
+.folder-name{
+    font-family: sans-serif;
+    font-size: medium;
+    margin-top: 5px;
+}
