@@ -1,6 +1,5 @@
 import React from 'react';
 import './Dashboard.css';
-import FileComponent from "../FileComponent/FileComponent";
 import FolderComponent from "../FolderComponent/FolderComponent";
 
 
@@ -13,27 +12,6 @@ const Dashboard: React.FC<{prerender: () => void}> = (props: any) => {
                              size={8}
                              created={new Date(2022,4,11)}
                              name="WEB"/>
-
-            <FileComponent name="Doc1"
-                           size={2}
-                           extension=".doc"
-                           created={new Date(2022,4,11)}
-            />
-            <FileComponent name="Image"
-                           size={4}
-                           extension=".png"
-                           created={new Date(2022,4,12)}
-            />
-            <FileComponent name="Document2"
-                           size={2}
-                           extension=".doc"
-                           created={new Date(2022,4,13)}
-            />
-            <FileComponent name="Presentation"
-                           size={3}
-                           extension=".pptx"
-                           created={new Date(2022,4,10)}
-            />
         </div>
     );
 }

@@ -1,7 +1,8 @@
 .folder{
     margin: 10px;
     cursor: pointer;
-    outline-color: #FFFFFF;
+    padding: 5px;
+    cursor: pointer;
 }
 
 .folder-icon{
