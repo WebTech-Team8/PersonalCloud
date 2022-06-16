@@ -6,6 +6,11 @@ const Logout = () => {
     const history = useHistory();
     const refreshToken = localStorage.getItem('refresh-token') || '';
     userService.logout({ token: refreshToken }).then(res => {
+        if(res.error) {
+            console.log(res.error);
+            return;
+        }
+
         localStorage.removeItem('auth-token');
         localStorage.removeItem('refresh-token');
 

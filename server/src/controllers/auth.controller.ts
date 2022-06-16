@@ -46,17 +46,17 @@ authController.post('/register', async (req, res) => {
 authController.post('/login', async (req, res) => {
     const email: string = req.body.email;
 	if (!email || email === '') {
-		return res.status(400).json({ error: 'Invalid email address' })
+		return res.status(400).json({ error: 'Invalid email address' });
 	}
 
 	const userDocument = await userService.getByEmail(email);
 	if (!userDocument) {
-		return res.status(404).json({ error: 'User does not exist' })
+		return res.status(404).json({ error: 'User does not exist' });
 	}
 
 	const user: IUser = userDocument.toJSON() as IUser;
 	if (!compareSync(req.body.password, user.password)) {
-		return res.status(403).json({ error: 'Invalid credentials' })
+		return res.status(403).json({ error: 'Invalid credentials' });
 	}
 
 	const tokens: ITokens = signTokens(user);
@@ -74,7 +74,7 @@ authController.post('/logout', async (req, res) => {
     const refreshToken: string = req.body.token;
 
 	if (!refreshToken || refreshToken === '') {
-		return res.status(400).json({ error: 'Invalid parameter - token' })
+		return res.status(400).json({ error: 'Invalid parameter - token' });
 	}
 
 	const tokenExists = await tokensService.isTokenExistent(refreshToken);

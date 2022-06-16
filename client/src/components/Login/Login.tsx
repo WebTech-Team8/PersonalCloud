@@ -17,6 +17,10 @@ const Login: React.FC<IFormComponentProps> = ({ controlChangeHandlerFactory, get
         const formData = getFormState();
 
         userService.login(formData).then(res => {
+            if (res.error) {
+                console.log(res.error);
+                return;
+            }
             // Saving the access token in the local storage of the browser
             localStorage.setItem('auth-token', res.accessToken);
             localStorage.setItem('refresh-token', res.refreshToken);
