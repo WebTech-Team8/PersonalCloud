@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { NavigationComponentProps } from './Navigation.props';
+import Dropdown from '../Dropdown/Dropdown';
 import userService from '../../services/user.service';
 import './Navigation.css'
 
@@ -19,10 +20,18 @@ const Navigation: React.FC<NavigationComponentProps> = ({ isLogged }) => {
         }
     });
 
+    const dropdownOptions = [
+        'Folder',
+        'File'
+    ];
+
     return (
         <nav className="site-nav">
             {isLogged ?
                 <ul>
+                    <li>
+                        <Dropdown btnName="Create" options={dropdownOptions} />
+                    </li>
                     <li><Link to="/logout">Logout, {userName}</Link></li>
                 </ul>
                 :
