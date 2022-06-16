@@ -7,6 +7,8 @@ import { UserModel } from '../models/user.model';
 import { saveRefreshToken, signTokens } from '../utils/token.utils';
 import * as userService from '../services/user.service';
 import * as tokensService from '../services/token.service';
+import { verifyToken } from '../middlewares/verify-token';
+import { IAuthenticatedRequest } from "../interfaces/auth-request.interface";
 
 const authController = Router();
 
@@ -86,6 +88,11 @@ authController.post('/logout', async (req, res) => {
 	}
 
 	return res.json({ message: 'You have been logged out.'});
+});
+
+authController.get('/user-info', verifyToken, async (req, res) => {
+	const user = await userService.getByEmail((req as IAuthenticatedRequest).user.email);
+	return res.json(user);
 });
 
 export default authController;

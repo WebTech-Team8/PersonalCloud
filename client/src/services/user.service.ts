@@ -36,6 +36,15 @@ const userService = {
     },
     isAuthenticated: () => {
         return localStorage.getItem('auth-token') !== null;
+    },
+    getUser: async (token: string) => {
+        const res = await fetch('http://localhost:3001/api/auth/user-info', {
+            headers: { 
+                'Authorization': `Bearer ${token}` 
+            }
+        });
+
+        return await res.json()
     }
 } 
 
