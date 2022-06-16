@@ -10,6 +10,7 @@ import Register from '../Register/Register';
 import Logout from '../Logout/Logout';
 import FolderDetails from "../FolderDetails/FolderDetails";
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import Notifications from '../Notifications/Notifications';
 
 function App() {
   const [isLogged, setIsLogged] = useState(userService.isAuthenticated());
@@ -23,12 +24,13 @@ function App() {
       <div className="site">
         <Header isLogged={isLogged} />
         <main className="site-main">
+          <Notifications />
           <Switch>
             <Route path="/" exact render={(props) => <Dashboard {...props} prerender={prerender} />} />
             <ProtectedRoute isLogged={!isLogged} redirectTo="/" path="/login" exact component={Login} />
             <ProtectedRoute isLogged={!isLogged} redirectTo="/" path="/register" exact component={Register} />
             <ProtectedRoute isLogged={isLogged} redirectTo="/login" path="/logout" exact component={Logout} />
-            <ProtectedRoute isLogged={isLogged} redirectTo="/login" path="/folders/1" exact component={FolderDetails}/>
+            <ProtectedRoute isLogged={isLogged} redirectTo="/login" path="/folders/1" exact component={FolderDetails} />
           </Switch>
         </main>
         <Footer />

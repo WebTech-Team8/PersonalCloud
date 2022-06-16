@@ -5,6 +5,7 @@ import { formComponent } from '../shared/hocs/formComponent';
 import { IFormComponentProps } from '../shared/types.forms';
 import userService from '../../services/user.service';
 import { useHistory } from 'react-router-dom';
+import notificationsService from '../../services/notifications.service';
 
 const Register: React.FC<IFormComponentProps> = ({ controlChangeHandlerFactory, getFormState }) => {
     // Using React Hook for accessing the history so we can redirect
@@ -22,18 +23,22 @@ const Register: React.FC<IFormComponentProps> = ({ controlChangeHandlerFactory, 
         const formData = getFormState();
 
         if (formData.password !== formData.confirmPassword) {
-            console.log('Passwords do not match!');
+            notificationsService.showError('Passwords do not match!');
             return;
         }
-        userService.register(formData).then(response => {
-            if (response.error) {
-                console.log(response.error);
+        userService.register(formData).then(res => {
+            if (res.error) {
+                // Showing error notification if error occurs
+                notificationsService.showError(res.error);
                 return;
             }
 
             // Saving the access token in the local storage of the browser
-            localStorage.setItem('auth-token', response.accessToken);
-            localStorage.setItem('refresh-token', response.refreshToken);
+            localStorage.setItem('auth-token', res.accessToken);
+            localStorage.setItem('refresh-token', res.refreshToken);
+
+            // Showing success notification after successful registration
+            notificationsService.showSuccess('Registered successfully.')
 
             // Redirect to home page after successful registration
             history.push('/');

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import notificationsService from '../../services/notifications.service';
 import userService from '../../services/user.service';
 import { formComponent } from '../shared/hocs/formComponent';
 import { IFormComponentProps } from '../shared/types.forms';
@@ -18,12 +19,16 @@ const Login: React.FC<IFormComponentProps> = ({ controlChangeHandlerFactory, get
 
         userService.login(formData).then(res => {
             if (res.error) {
-                console.log(res.error);
+                // Showing error notification if error occurs
+                notificationsService.showError(res.error);
                 return;
             }
             // Saving the access token in the local storage of the browser
             localStorage.setItem('auth-token', res.accessToken);
             localStorage.setItem('refresh-token', res.refreshToken);
+
+            // Showing success notification after successful sign in
+            notificationsService.showSuccess('Logged in successfully!')
 
             // Redirect to home page after successful signing in
             history.push('/');
