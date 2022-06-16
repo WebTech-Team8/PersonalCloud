@@ -1,6 +1,6 @@
 import React from 'react';
 import './Dashboard.css';
-import FolderComponent from "../FolderComponent/FolderComponent";
+import FolderComponent from '../FolderComponent/FolderComponent';
 
 
 const Dashboard: React.FC<{prerender: () => void}> = (props: any) => {

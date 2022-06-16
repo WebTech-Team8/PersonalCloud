@@ -1,7 +1,7 @@
 import React from "react";
 import {Folder} from '../../interfaces/folder';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faFolder } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFolder } from '@fortawesome/free-solid-svg-icons';
 import './FolderComponent.css';
 import {Link} from 'react-router-dom';
 

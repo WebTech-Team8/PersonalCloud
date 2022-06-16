@@ -1,5 +1,5 @@
 import React from 'react';
-import FileComponent from "../FileComponent/FileComponent";
+import FileComponent from '../FileComponent/FileComponent';
 import './FolderDetails.css';
 
 const FolderDetails: React.FC = () => {
