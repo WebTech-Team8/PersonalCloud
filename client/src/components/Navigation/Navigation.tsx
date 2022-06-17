@@ -20,9 +20,13 @@ const Navigation: React.FC<NavigationComponentProps> = ({ isLogged }) => {
         }
     });
 
+    const showModal = () => {
+        document.getElementsByClassName('modal')[0].classList.add('show');
+    }
+
     const dropdownOptions = [
-        'Folder',
-        'File'
+        {name: 'Folder', onclick: showModal},
+        {name: 'File', onclick: () => {}}
     ];
 
     return (

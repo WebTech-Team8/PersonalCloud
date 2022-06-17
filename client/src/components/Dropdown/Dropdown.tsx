@@ -14,7 +14,7 @@ const Dropdown: React.FC<DropdownProps> = ({ btnName, options }) => {
         <div className="dropdown">
             <button onClick={showContent} className="dropdown-btn">{btnName} <FontAwesomeIcon icon={faCaretDown} /></button>
             <div className="dropdown-content">
-                { options.map(o => <Link to='#'>{o}</Link>) }
+                { options.map(o => <Link to='#' onClick={o.onclick} key={o.name}>{o.name}</Link>) }
             </div>
         </div>
     );
