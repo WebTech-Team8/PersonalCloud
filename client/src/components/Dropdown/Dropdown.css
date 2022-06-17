@@ -35,6 +35,11 @@
     z-index: 1;
 }
 
+.dropdown:hover .dropdown-content,
+.dropdown:focus .dropdown-content {
+    display: block;
+}
+
 /* Links inside the dropdown */
 .site-nav .dropdown-content a {
     text-decoration: none;
