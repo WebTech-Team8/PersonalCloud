@@ -8,7 +8,12 @@ async function removeRefreshToken(refreshToken: string) {
     return await RefreshTokenModel.findOneAndRemove({ refreshToken });
 }
 
+async function getRefreshToken(refreshToken: string) {
+    return await RefreshTokenModel.findOne({ refreshToken });
+}
+
 export {
     removeRefreshToken,
-    isTokenExistent
+    isTokenExistent,
+    getRefreshToken
 }

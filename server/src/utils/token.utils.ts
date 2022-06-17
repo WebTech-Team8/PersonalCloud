@@ -16,3 +16,10 @@ export const saveRefreshToken = (refreshToken: string) => {
 
     return token.save();
 }
+
+export const updateExpiredAccessToken = (refreshToken: string) => {
+    const user: IUser = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET as string) as IUser;
+    const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET as string);
+
+    return accessToken;
+}

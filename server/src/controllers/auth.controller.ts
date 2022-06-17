@@ -4,7 +4,7 @@ import { Router } from 'express';
 import { ITokens } from '../interfaces/tokens.interface';
 import { IUser } from '../interfaces/user.interface';
 import { UserModel } from '../models/user.model';
-import { saveRefreshToken, signTokens } from '../utils/token.utils';
+import { saveRefreshToken, signTokens, updateExpiredAccessToken } from '../utils/token.utils';
 import * as userService from '../services/user.service';
 import * as tokensService from '../services/token.service';
 import { verifyToken } from '../middlewares/verify-token';
@@ -93,6 +93,28 @@ authController.post('/logout', async (req, res) => {
 authController.get('/user-info', verifyToken, async (req, res) => {
 	const user = await userService.getByEmail((req as IAuthenticatedRequest).user.email);
 	return res.json(user);
+});
+
+authController.post('/token', async (req, res) => {
+	const refreshToken: string = req.body.token;
+
+	if (!refreshToken || refreshToken == '') {
+		return res.status(400).json({ error: 'Invalid token' });
+	}
+
+	const tokenDocument = await tokensService.getRefreshToken(refreshToken);
+
+	if (!tokenDocument) {
+		return res.status(403).send({ error: 'Invalid refresh token' });
+	}
+
+	try {
+		const accessToken = updateExpiredAccessToken(tokenDocument.refreshToken);
+
+		return res.status(200).json({ accessToken });
+	} catch(err) {
+		return res.status(400).json(err);
+	}
 });
 
 export default authController;
