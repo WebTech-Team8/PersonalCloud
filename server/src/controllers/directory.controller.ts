@@ -20,8 +20,11 @@ directoryController.post('/create', verifyToken, async (req, res) => {
     }
 
     try {
-        const directory = await directoryService.createDir(dirName, ownerId, parentId);
-        directoryService.addDirToParentChildren(parentId, directory.id);
+        const directory = (await directoryService.createDir(dirName, ownerId, parentId)) as IDirectory;
+
+        if (parentId) {
+            directoryService.addDirToParentChildren(parentId, directory.id);
+        }
 
         return res.json(directory);
     } catch (error) {
@@ -34,6 +37,31 @@ directoryController.post('/create', verifyToken, async (req, res) => {
         return res.send({ error: message });
     }
 });
+
+directoryController.get('/:directoryId', async (req ,res) => {
+    const directoryId = req.params.directoryId;
+    const isDirectoryExistent = await directoryService.exists(directoryId);
+
+    if (!isDirectoryExistent) {
+        return res.json({ error: 'There is no directory with such id.' });
+    }
+
+    const directory = await directoryService.getById(directoryId);
+
+    return res.json(directory);
+});
+
+directoryController.get('/root/:ownerId', async (req, res) => {
+    const ownerId = req.params.ownerId;
+    
+    const rootDir = await directoryService.getUserRootDir(ownerId);
+
+    if (!rootDir) {
+        return res.status(400).json({ error: 'User does not have directories.' });
+    }
+
+    return res.json(rootDir);
+})
 
 directoryController.patch('/:directoryId', async (req, res) => {
     const directoryId = req.params.directoryId;

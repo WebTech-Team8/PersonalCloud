@@ -12,7 +12,7 @@ const FolderComponent: React.FC<Folder> = (props) => {
 
     return (
         <div>
-            <Link to="/folders/1" className="folder">
+            <Link to={`/folders/${props.id}`} className="folder">
                 <FontAwesomeIcon className="folder-icon" icon={faFolder} size="lg"/>
                 <h3 className="folder-name">{folder.name}</h3>
             </Link>

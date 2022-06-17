@@ -35,6 +35,12 @@
     z-index: 1;
 }
 
+.dropdown:hover .dropdown-btn,
+.dropdown:focus .dropdown-btn {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
 .dropdown:hover .dropdown-content,
 .dropdown:focus .dropdown-content {
     display: block;
@@ -45,11 +51,6 @@
     text-decoration: none;
     display: block;
     border-radius: unset;
-}
-
-.site-nav .dropdown-content a:first-child {
-    border-top-left-radius: var(--nav-link-border-radius);
-    border-top-right-radius: var(--nav-link-border-radius);
 }
 
 .site-nav .dropdown-content a:last-child {

@@ -6,7 +6,7 @@ async function isRootDir(userId: string) {
 }
 
 async function isDirNameUsed(parentId: string, dirName: string) {
-    const parent = await DirectoryModel.findById(parentId);
+    const parent = await DirectoryModel.findOne({id: parentId});
     
     const existingDir = await DirectoryModel.find({ id: { $in: parent?.childDirectories }, name: dirName });
 
@@ -33,7 +33,7 @@ async function createDir(dirName: string, ownerId: string, parent: string) {
 }
 
 async function addDirToParentChildren(parentId: string, directoryId: string) {
-    const parent = await DirectoryModel.findById(parentId);
+    const parent = await DirectoryModel.findOne({id: parentId});
     parent?.childDirectories.push(directoryId);
     return await parent?.save();
 }
@@ -48,6 +48,10 @@ async function exists(id: string) {
 
 async function getById(id: string) {
     return await DirectoryModel.findOne({ id });
+}
+
+async function getUserRootDir(ownerId: string) {
+    return await DirectoryModel.findOne({ ownerId, isRootDir: true });
 }
 
 async function removeDirectory(directoryId: string) {
@@ -66,6 +70,7 @@ export {
     renameDir,
     exists,
     getById,
+    getUserRootDir,
     removeDirectory,
     removeChildDirectory
 }
