@@ -33,9 +33,7 @@ const Navigation: React.FC<NavigationComponentProps> = ({ isLogged }) => {
         <nav className="site-nav">
             {isLogged ?
                 <ul>
-                    <li>
-                        <Dropdown btnName="Create" options={dropdownOptions} />
-                    </li>
+                    <li><Dropdown btnName="Create" options={dropdownOptions} /></li>
                     <li><Link to="/logout">Logout, {userName}</Link></li>
                 </ul>
                 :

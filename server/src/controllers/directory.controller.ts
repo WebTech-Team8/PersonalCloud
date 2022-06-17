@@ -49,6 +49,18 @@ directoryController.get('/:directoryId', async (req ,res) => {
     const directory = await directoryService.getById(directoryId);
 
     return res.json(directory);
+});
+
+directoryController.get('/root/:ownerId', async (req, res) => {
+    const ownerId = req.params.ownerId;
+    
+    const rootDir = await directoryService.getUserRootDir(ownerId);
+
+    if (!rootDir) {
+        return res.status(400).json({ error: 'User does not have directories.' });
+    }
+
+    return res.json(rootDir);
 })
 
 directoryController.patch('/:directoryId', async (req, res) => {

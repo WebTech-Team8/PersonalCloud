@@ -15,6 +15,11 @@ const directoryService = {
         const res = await fetch(`http://localhost:3001/api/directories/${directoryId}`, {});
 
         return await res.json();
+    },
+    getUserRootDir: async (userId: string) => {
+        const res = await fetch(`http://localhost:3001/api/directories/root/${userId}`, {});
+
+        return await res.json();
     }
 }
 

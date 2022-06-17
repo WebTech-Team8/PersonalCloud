@@ -4,3 +4,7 @@
     justify-content: flex-start;
     align-items: flex-start;
 }
+
+.dashboard p {
+    font-size: 1.5em;
+}
