@@ -5,6 +5,7 @@ export interface IForm {
     username: string,
     password: string
     confirmPassword: string,
+    folderName: string
 }
 
 export interface IFormState {

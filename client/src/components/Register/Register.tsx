@@ -98,7 +98,8 @@ const initialFormState = {
     email: '',
     username: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    folderName: ''
 }
 
 export default formComponent(Register, initialFormState);

@@ -72,7 +72,8 @@ const initialFormState = {
     email: '',
     username: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    folderName: ''
 }
 
 export default formComponent(Login, initialFormState);

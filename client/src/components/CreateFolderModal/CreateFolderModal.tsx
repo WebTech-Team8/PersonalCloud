@@ -1,10 +1,42 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+import directoryService from '../../services/directory.service';
+import notificationsService from '../../services/notifications.service';
+import { formComponent } from '../shared/hocs/formComponent';
+import { IFormComponentProps } from '../shared/types.forms';
 import './CreateFolderModal.css';
 
-const CreateFolderModal: React.FC = () => {
+const CreateFolderModal: React.FC<IFormComponentProps> = ({ controlChangeHandlerFactory, getFormState }) => {
+    const history = useHistory();
+    
+    const nameOnChangeHandler = controlChangeHandlerFactory('folderName');
 
     const hideModal = () => {
         document.getElementsByClassName('modal')[0].classList.remove('show');
+    }
+
+    const submitHandler = async () => {
+        const { folderName } = getFormState();
+        const formData = {
+            dirName: folderName,
+            parentId: null
+        }
+
+        const token = localStorage.getItem('auth-token') || '';
+
+        directoryService.createDirectory(formData, token).then(res => {
+            if (res.error) {
+                notificationsService.showError(res.error);
+                return;
+            }
+
+            notificationsService.showSuccess(`Folder ${folderName} created successfully!`);
+
+            hideModal();
+            history.push('/');
+        }).catch(err => {
+            console.log(err);
+        });
     }
 
     return (
@@ -15,11 +47,11 @@ const CreateFolderModal: React.FC = () => {
                         <h1 className="title">New Folder</h1>
                     </header>
                     <main>
-                        <input type="text" name="name" />
+                        <input type="text" name="name" onChange={nameOnChangeHandler} />
                     </main>
                     <footer>
                         <button className="close-modal" onClick={hideModal}>Close</button>
-                        <button className="add-folder">Add</button>
+                        <button className="add-folder" onClick={submitHandler}>Add</button>
                     </footer>
                 </section>
             </section>
@@ -27,4 +59,14 @@ const CreateFolderModal: React.FC = () => {
     );
 }
 
-export default CreateFolderModal;
+const initialState = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    username: '',
+    password: '',
+    confirmPassword: '',
+    folderName: ''
+}
+
+export default formComponent(CreateFolderModal, initialState);

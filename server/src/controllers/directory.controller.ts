@@ -21,7 +21,10 @@ directoryController.post('/create', verifyToken, async (req, res) => {
 
     try {
         const directory = await directoryService.createDir(dirName, ownerId, parentId);
-        directoryService.addDirToParentChildren(parentId, directory.id);
+
+        if (parentId) {
+            directoryService.addDirToParentChildren(parentId, directory.id);
+        }
 
         return res.json(directory);
     } catch (error) {
