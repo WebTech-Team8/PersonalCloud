@@ -32,7 +32,7 @@ function App() {
             <ProtectedRoute isLogged={!isLogged} redirectTo="/" path="/login" exact component={Login} />
             <ProtectedRoute isLogged={!isLogged} redirectTo="/" path="/register" exact component={Register} />
             <ProtectedRoute isLogged={isLogged} redirectTo="/login" path="/logout" exact component={Logout} />
-            <ProtectedRoute isLogged={isLogged} redirectTo="/login" path="/folders/1" exact component={FolderDetails} />
+            <ProtectedRoute isLogged={isLogged} redirectTo="/login" path="/folders/:id" exact component={FolderDetails} />
           </Switch>
         </main>
         <Footer />

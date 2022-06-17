@@ -17,9 +17,10 @@ const CreateFolderModal: React.FC<IFormComponentProps> = ({ controlChangeHandler
 
     const submitHandler = async () => {
         const { folderName } = getFormState();
+        const parentId = location.pathname.includes('/folders/') ? location.pathname.split('/').pop() : null;
         const formData = {
             dirName: folderName,
-            parentId: null
+            parentId: parentId
         }
 
         const token = localStorage.getItem('auth-token') || '';
@@ -33,7 +34,8 @@ const CreateFolderModal: React.FC<IFormComponentProps> = ({ controlChangeHandler
             notificationsService.showSuccess(`Folder ${folderName} created successfully!`);
 
             hideModal();
-            history.push('/');
+            (document.querySelector('.modal #dialog input') as HTMLInputElement).value = '';
+            history.push(`/folders/${res.id}`);
         }).catch(err => {
             console.log(err);
         });

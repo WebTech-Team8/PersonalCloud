@@ -20,7 +20,7 @@ directoryController.post('/create', verifyToken, async (req, res) => {
     }
 
     try {
-        const directory = await directoryService.createDir(dirName, ownerId, parentId);
+        const directory = (await directoryService.createDir(dirName, ownerId, parentId)) as IDirectory;
 
         if (parentId) {
             directoryService.addDirToParentChildren(parentId, directory.id);
@@ -37,6 +37,19 @@ directoryController.post('/create', verifyToken, async (req, res) => {
         return res.send({ error: message });
     }
 });
+
+directoryController.get('/:directoryId', async (req ,res) => {
+    const directoryId = req.params.directoryId;
+    const isDirectoryExistent = await directoryService.exists(directoryId);
+
+    if (!isDirectoryExistent) {
+        return res.json({ error: 'There is no directory with such id.' });
+    }
+
+    const directory = await directoryService.getById(directoryId);
+
+    return res.json(directory);
+})
 
 directoryController.patch('/:directoryId', async (req, res) => {
     const directoryId = req.params.directoryId;

@@ -10,6 +10,11 @@ const directoryService = {
         });
 
         return await res.json();
+    },
+    getById: async (directoryId: string) => {
+        const res = await fetch(`http://localhost:3001/api/directories/${directoryId}`, {});
+
+        return await res.json();
     }
 }
 
