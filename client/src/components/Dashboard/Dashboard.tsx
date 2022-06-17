@@ -7,7 +7,7 @@ import directoryService from '../../services/directory.service';
 
 const Dashboard: React.FC<{ prerender: () => void }> = (props: any) => {
     props.prerender();
-    const [rootDir, setRootDir] = useState({id: '', name: ''});
+    const [rootDir, setRootDir] = useState({id: '', name: '', parentId: ''});
 
     useEffect(() => {
         const accessToken = localStorage.getItem('auth-token') || '';
@@ -28,7 +28,8 @@ const Dashboard: React.FC<{ prerender: () => void }> = (props: any) => {
                 id={rootDir.id}
                 size={8}
                 created={new Date(2022, 4, 11)}
-                name={rootDir.name} />
+                name={rootDir.name}
+                parentId={rootDir.parentId} />
                 : <p>You have not created any directories yet.</p>}
         </div>
     );

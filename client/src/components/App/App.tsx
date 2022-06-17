@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import userService from '../../services/user.service';
 import './App.css';
@@ -17,7 +17,7 @@ function App() {
   const [isLogged, setIsLogged] = useState(userService.isAuthenticated());
 
   const prerender = () => {
-    setIsLogged(userService.isAuthenticated());
+    useEffect(() => setIsLogged(userService.isAuthenticated()), []);
   }
 
   return (

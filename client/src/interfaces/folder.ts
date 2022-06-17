@@ -6,4 +6,5 @@ export interface Folder {
     files?: File[];
     size: number;
     created: Date;
+    parentId: string;
 }

@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import directoryService from '../../services/directory.service';
 import FileComponent from '../FileComponent/FileComponent';
 import { FolderDetailsProps } from './FolderDetails.props';
 import './FolderDetails.css';
+import BackButton from '../BackButton/BackButton';
 
 const FolderDetails: React.FC<FolderDetailsProps> = ({ match }) => {
     const directoryId = match.params.id;
+    const [dirName, setDirName] = useState('');
+    const [parentId, setParentId] = useState('');
 
-    directoryService.getById(directoryId).then(dir => {
-        // console.log(dir);
-    });
+    useEffect(() => {
+        directoryService.getById(directoryId).then(dir => {
+            setDirName(dir.name);
+            setParentId(dir.parentDirId);
+        });
+    }, [directoryId]);
 
     const files =[
         <FileComponent name="Doc1"
@@ -35,8 +41,12 @@ const FolderDetails: React.FC<FolderDetailsProps> = ({ match }) => {
 
 
     return (
-        <div className="files">
-            {files}
+        <div>
+            <h2>{dirName}</h2>
+            {parentId && <BackButton parentId={parentId} />}
+            <div className="files">
+                {files}
+            </div>
         </div>
     )
 }
