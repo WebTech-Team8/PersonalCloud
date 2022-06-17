@@ -1,13 +1,15 @@
 .files {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    row-gap: 20px;
-    margin: 40px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    row-gap: 0.6em;
+    margin: 1em;
 }
 
-
-
-
-
-
+.folders {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    row-gap: 0.6em;
+    margin: 1em;
+}
