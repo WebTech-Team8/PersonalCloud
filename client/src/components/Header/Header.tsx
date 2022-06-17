@@ -4,6 +4,7 @@ import Navigation from '../Navigation/Navigation';
 import { HeaderComponentProps } from './Header.props';
 import './Header.css'
 import SearchBar from '../SearchBar/SearchBar';
+import FileUpload from "../FileUpload/FileUpload";
 
 const Header: React.FC<HeaderComponentProps> = ({ isLogged }: HeaderComponentProps) => {
     return (
@@ -16,6 +17,7 @@ const Header: React.FC<HeaderComponentProps> = ({ isLogged }: HeaderComponentPro
                     </Link>
                 </div>
                 <SearchBar />
+                <FileUpload/>
                 <Navigation isLogged={isLogged} />
             </div>
         </header>
