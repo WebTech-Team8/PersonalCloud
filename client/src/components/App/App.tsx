@@ -11,6 +11,7 @@ import Logout from '../Logout/Logout';
 import FolderDetails from "../FolderDetails/FolderDetails";
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Notifications from '../Notifications/Notifications';
+import CreateFolderModal from '../CreateFolderModal/CreateFolderModal';
 
 function App() {
   const [isLogged, setIsLogged] = useState(userService.isAuthenticated());
@@ -25,6 +26,7 @@ function App() {
         <Header isLogged={isLogged} />
         <main className="site-main">
           <Notifications />
+          <CreateFolderModal />
           <Switch>
             <Route path="/" exact render={(props) => <Dashboard {...props} prerender={prerender} />} />
             <ProtectedRoute isLogged={!isLogged} redirectTo="/" path="/login" exact component={Login} />
