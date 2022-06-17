@@ -17,7 +17,7 @@ const CreateFolderModal: React.FC<IFormComponentProps> = ({ controlChangeHandler
 
     const submitHandler = async () => {
         const { folderName } = getFormState();
-        const parentId = location.pathname.includes('/folders/') ? location.pathname.split('/').pop() : null;
+        const parentId = window.location.pathname.includes('/folders/') ? window.location.pathname.split('/').pop() : null;
         const formData = {
             dirName: folderName,
             parentId: parentId

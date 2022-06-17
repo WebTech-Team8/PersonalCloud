@@ -17,7 +17,7 @@ function App() {
   const [isLogged, setIsLogged] = useState(userService.isAuthenticated());
 
   const prerender = () => {
-    useEffect(() => setIsLogged(userService.isAuthenticated()), []);
+    setIsLogged(userService.isAuthenticated());
   }
 
   return (
