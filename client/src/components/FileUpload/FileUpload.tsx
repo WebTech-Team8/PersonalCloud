@@ -19,14 +19,12 @@ const FileUpload: React.FC = () => {
     }
 
     return (
-        <>
-            <button type="button"
-                    className="upload-file"
-                    onChange={(e: SyntheticEvent) => handleFileUpload(e.currentTarget as HTMLInputElement)}>
-                <FontAwesomeIcon icon={faFileArrowUp} size="2x"/>
-                Upload File
-            </button>
-        </>
+        <form method="POST">
+            <FontAwesomeIcon icon={faFileArrowUp} size="2x"/>
+            <input type="file" accept=".doc,.pdf,.pptx, image/*"
+                   onChange={(e: SyntheticEvent) => handleFileUpload(e.currentTarget as HTMLInputElement)}/>
+                   <input type="submit" value="Upload File"/>
+        </form>
     )
 }
 
